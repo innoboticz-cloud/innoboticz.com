@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNOBOTICZ | AI, IoT & Robotics Academy</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #0a1128;
+            --secondary: #30c9e8;
+            --accent: #08d257; /* Neon Green */
+            --text-light: #f4f4f4;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body { background-color: var(--primary); color: white; overflow-x: hidden; }
+
+        #particles-js {
+            position: fixed; width: 100%; height: 100%; z-index: -1;
+        }
+
+        /* --- Modern Navigation --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(10, 17, 40, 0.8); backdrop-filter: blur(10px);
+            z-index: 1000; border-bottom: 1px solid var(--glass);
+        }
+
+        .logo { font-size: 1.8rem; font-weight: 900; color: var(--secondary); text-decoration: none; letter-spacing: 2px; }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 30px; }
+        .nav-links a { text-decoration: none; color: white; font-weight: 500; transition: 0.3s; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 0 10%; position: relative;
+        }
+
+        .hero h1 { font-size: 5rem; line-height: 1; margin-bottom: 20px; text-transform: uppercase; }
+        .hero h1 span { color: var(--secondary); display: block; font-size: 2.5rem; letter-spacing: 10px; }
+
+        .hero p { font-size: 1.2rem; max-width: 800px; margin-bottom: 40px; color: #ccc; }
+
+        /* --- Hardware & Robotics Academy Gallery --- */
+        .section-padding { padding: 100px 10%; }
+        .title-center { text-align: center; margin-bottom: 60px; }
+        .title-center h2 { font-size: 2.5rem; color: var(--secondary); }
+
+        .gallery-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;
+        }
+
+        .gallery-card {
+            position: relative; height: 350px; border-radius: 20px; overflow: hidden;
+            background: var(--glass); border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.5s; cursor: pointer;
+        }
+
+        .gallery-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(8, 210, 87, 0.2); }
+
+        .gallery-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
+        .gallery-card:hover img { opacity: 0.9; scale: 1.1; }
+
+        .card-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        }
+
+        .card-tag { 
+            background: var(--accent); color: black; padding: 5px 12px; 
+            border-radius: 5px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase;
+        }
+
+        /* --- Advanced Hardware Showcase (3D Hover) --- */
+        .hardware-box {
+            background: linear-gradient(145deg, #0d1635, #0a1128);
+            padding: 40px; border-radius: 30px; display: flex; align-items: center;
+            gap: 50px; margin-top: 50px; border: 1px solid var(--glass);
+        }
+
+        .hardware-info { flex: 1; }
+        .hardware-visual { flex: 1; position: relative; perspective: 1000px; }
+
+        .hardware-visual i {
+            font-size: 10rem; color: var(--secondary);
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px var(--secondary));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateY(0deg); }
+            50% { transform: translateY(-20px) rotateY(20deg); }
+        }
+
+        /* --- Kids Academy Special Section --- */
+        .kids-section {
+            background: linear-gradient(45deg, #121d45, #192864);
+            border-radius: 50px 50px 0 0; position: relative;
+        }
+
+        .kid-badge {
+            display: inline-block; padding: 10px 25px; border-radius: 50px;
+            background: #ffcc00; color: black; font-weight: bold; margin-bottom: 20px;
+        }
+
+        /* --- Custom Buttons --- */
+        .btn-glow {
+            padding: 15px 40px; background: var(--secondary); color: white;
+            text-decoration: none; border-radius: 10px; font-weight: bold;
+            box-shadow: 0 0 20px rgba(48,201,232,0.4); transition: 0.4s;
+        }
+        .btn-glow:hover { background: var(--accent); box-shadow: 0 0 30px rgba(8, 210, 87, 0.6); color: black; }
+
+        footer { padding: 50px 10%; background: #050a18; border-top: 1px solid var(--glass); }
+
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <nav>
+        <a href="#" class="logo">INNOBOTICZ</a>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#academy">KIDS ACADEMY</a></li>
+            <li><a href="#hardware">HARDWARE</a></li>
+            <li><a href="#iot">IOT SOLUTIONS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1 data-aos="zoom-in"><span>BEYOND AUTOMATION</span>FUTURE OF ROBOTICS</h1>
+        <p data-aos="fade-up" data-aos-delay="300">
+            From Industrial LoRaWAN Solutions to Training the Next Generation of Engineers. 
+            We bridge the gap between imagination and reality.
+        </p>
+        <div data-aos="fade-up" data-aos-delay="500">
+            <a href="#academy" class="btn-glow">VISIT KIDS ACADEMY</a>
+        </div>
+    </section>
+
+    <section class="section-padding kids-section" id="academy">
+        <div class="title-center" data-aos="fade-up">
+            <span class="kid-badge">FOR FUTURE SCIENTISTS</span>
+            <h2>Robotics Kids School</h2>
+            <p style="color: #aaa; margin-top: 10px;">Inspiring young minds with hands-on STEM education.</p>
+        </div>
+
+        <div class="gallery-container">
+            <div class="gallery-card" data-aos="flip-left">
+                <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=500" alt="Kids coding">
+                <div class="card-overlay">
+                    <span class="card-tag">Level 1</span>
+                    <h3>Arduino Basics</h3>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Young kids learning circuit design.</p>
+                </div>
+            </div>
+            <div class="gallery-card" data-aos="flip-left" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=500" alt="Robot building">
+                <div class="card-overlay">
+                    <span class="card-tag">Level 2</span>
+                    <h3>Robot Assembly</h3>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Building autonomous line followers.</p>
+                </div>
+            </div>
+            <div class="gallery-card" data-aos="flip-left" data-aos-delay="400">
+                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=500" alt="3D Printing">
+                <div class="card-overlay">
+                    <span class="card-tag">Level 3</span>
+                    <h3>3D Prototyping</h3>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Printing the future, layer by layer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="hardware">
+        <div class="hardware-box" data-aos="fade-right">
+            <div class="hardware-info">
+                <h3 style="color: var(--accent); letter-spacing: 2px;">INDUSTRIAL R&D</h3>
+                <h2 style="font-size: 2.5rem; margin: 15px 0;">LoRaWAN & IoT Hardware</h2>
+                <p style="color: #aaa; line-height: 1.6;">
+                    Custom PCB Designing, Embedded Firmware, and Long Range Data Transmission. 
+                    We manufacture robust hardware for smart agriculture and industrial automation.
+                </p>
+                <div style="margin-top: 30px;">
+                    <i class="fas fa-check-circle" style="color: var(--accent);"></i> Custom PCB Design<br>
+                    <i class="fas fa-check-circle" style="color: var(--accent);"></i> Industrial Enclosures<br>
+                    <i class="fas fa-check-circle" style="color: var(--accent);"></i> 20,000+ Active Nodes
+                </div>
+            </div>
+            <div class="hardware-visual" data-aos="zoom-in">
+                <i class="fas fa-microchip"></i>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="text-align: center;">
+            <p style="opacity: 0.6;">&copy; 2026 INNOBOTICZ SOLUTIONS | Coimbatore, India</p>
+            <div style="margin-top: 20px;">
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Particles Configuration
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80 },
+                "color": { "value": "#30c9e8" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3 },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#30c9e8",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": { "enable": true, "speed": 2 }
+            }
+        });
+    </script>
+</body>
+</html>
